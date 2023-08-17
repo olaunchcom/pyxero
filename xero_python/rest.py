@@ -152,6 +152,8 @@ class RESTClientObject(object):
                     connect=_request_timeout[0], read=_request_timeout[1]
                 )
 
+        retries = urllib3.Retry(total=3, status=0, raise_on_status=False)
+
         if "Content-Type" not in headers:
             headers["Content-Type"] = "application/json"
 
@@ -171,6 +173,7 @@ class RESTClientObject(object):
                         preload_content=_preload_content,
                         timeout=timeout,
                         headers=headers,
+                        retries=retries,
                     )
                 elif (
                     headers["Content-Type"] == "application/x-www-form-urlencoded"
@@ -183,6 +186,7 @@ class RESTClientObject(object):
                         preload_content=_preload_content,
                         timeout=timeout,
                         headers=headers,
+                        retries=retries,
                     )
                 elif headers["Content-Type"] == "multipart/form-data":
                     # must del headers['Content-Type'], or the correct
@@ -202,6 +206,7 @@ class RESTClientObject(object):
                         preload_content=_preload_content,
                         timeout=timeout,
                         headers=headers,
+                        retries=retries,
                     )
                 # Pass a `string` parameter directly in the body to support
                 # other content types than Json when `body` argument is
@@ -215,6 +220,7 @@ class RESTClientObject(object):
                         preload_content=_preload_content,
                         timeout=timeout,
                         headers=headers,
+                        retries=retries,
                     )
                 else:
                     # Cannot generate the request from given parameters
@@ -231,6 +237,7 @@ class RESTClientObject(object):
                     preload_content=_preload_content,
                     timeout=timeout,
                     headers=headers,
+                    retries=retries,
                 )
         except urllib3.exceptions.SSLError as e:
             msg = "{0}\n{1}".format(type(e).__name__, str(e))
