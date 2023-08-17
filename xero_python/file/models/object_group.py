@@ -36,3 +36,5 @@ class ObjectGroup(Enum):
     PREPAYMENT = "Prepayment"
     QUOTE = "Quote"
     RECEIPT = "Receipt"
+    PURCHASEORDER = "PurchaseOrder"
+    UNKNOWN = "Unknown"
