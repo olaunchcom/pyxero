@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **credit_note_id** | **str** | Xero generated unique identifier | [optional] 
 **credit_note_number** | **str** | ACCRECCREDIT – Unique alpha numeric code identifying credit note (when missing will auto-generate from your Organisation Invoice Settings) | [optional] 
 **reference** | **str** | ACCRECCREDIT only – additional reference number | [optional] 
-**sent_to_contact** | **bool** | boolean to indicate if a credit note has been sent to a contact via  the Xero app (currently read only) | [optional] 
+**sent_to_contact** | **bool** | Boolean to set whether the credit note in the Xero app should be marked as “sent”. This can be set only on credit notes that have been approved | [optional] 
 **currency_rate** | **float** | The currency rate for a multicurrency invoice. If no rate is specified, the XE.com day rate is used | [optional] 
 **remaining_credit** | **float** | The remaining credit balance on the Credit Note | [optional] 
 **allocations** | [**list[Allocation]**](Allocation.md) | See Allocations | [optional] 
@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **has_errors** | **bool** | A boolean to indicate if a credit note has an validation errors | [optional] [default to False]
 **validation_errors** | [**list[ValidationError]**](ValidationError.md) | Displays array of validation error messages from the API | [optional] 
 **warnings** | [**list[ValidationError]**](ValidationError.md) | Displays array of warning messages from the API | [optional] 
+**invoice_addresses** | [**list[InvoiceAddress]**](InvoiceAddress.md) | An array of addresses used to auto calculate sales tax | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

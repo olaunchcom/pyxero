@@ -981,6 +981,13 @@ class Organisation(BaseModel):
             "NON_GST_CASHBOOK",
             "ULTIMATE",
             "LITE",
+            "ULTIMATE_10",
+            "ULTIMATE_20",
+            "ULTIMATE_50",
+            "ULTIMATE_100",
+            "IGNITE",
+            "GROW",
+            "COMPREHENSIVE",
             "None",
         ]  # noqa: E501
 

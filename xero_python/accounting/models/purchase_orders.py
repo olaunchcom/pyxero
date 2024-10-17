@@ -29,18 +29,78 @@ class PurchaseOrders(BaseModel):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"purchase_orders": "list[PurchaseOrder]"}
+    openapi_types = {
+        "pagination": "Pagination",
+        "warnings": "list[ValidationError]",
+        "purchase_orders": "list[PurchaseOrder]",
+    }
 
-    attribute_map = {"purchase_orders": "PurchaseOrders"}
+    attribute_map = {
+        "pagination": "pagination",
+        "warnings": "Warnings",
+        "purchase_orders": "PurchaseOrders",
+    }
 
-    def __init__(self, purchase_orders=None):  # noqa: E501
+    def __init__(
+        self, pagination=None, warnings=None, purchase_orders=None
+    ):  # noqa: E501
         """PurchaseOrders - a model defined in OpenAPI"""  # noqa: E501
 
+        self._pagination = None
+        self._warnings = None
         self._purchase_orders = None
         self.discriminator = None
 
+        if pagination is not None:
+            self.pagination = pagination
+        if warnings is not None:
+            self.warnings = warnings
         if purchase_orders is not None:
             self.purchase_orders = purchase_orders
+
+    @property
+    def pagination(self):
+        """Gets the pagination of this PurchaseOrders.  # noqa: E501
+
+
+        :return: The pagination of this PurchaseOrders.  # noqa: E501
+        :rtype: Pagination
+        """
+        return self._pagination
+
+    @pagination.setter
+    def pagination(self, pagination):
+        """Sets the pagination of this PurchaseOrders.
+
+
+        :param pagination: The pagination of this PurchaseOrders.  # noqa: E501
+        :type: Pagination
+        """
+
+        self._pagination = pagination
+
+    @property
+    def warnings(self):
+        """Gets the warnings of this PurchaseOrders.  # noqa: E501
+
+        Displays array of warning messages from the API  # noqa: E501
+
+        :return: The warnings of this PurchaseOrders.  # noqa: E501
+        :rtype: list[ValidationError]
+        """
+        return self._warnings
+
+    @warnings.setter
+    def warnings(self, warnings):
+        """Sets the warnings of this PurchaseOrders.
+
+        Displays array of warning messages from the API  # noqa: E501
+
+        :param warnings: The warnings of this PurchaseOrders.  # noqa: E501
+        :type: list[ValidationError]
+        """
+
+        self._warnings = warnings
 
     @property
     def purchase_orders(self):

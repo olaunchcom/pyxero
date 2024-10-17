@@ -29,18 +29,76 @@ class Overpayments(BaseModel):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    openapi_types = {"overpayments": "list[Overpayment]"}
+    openapi_types = {
+        "pagination": "Pagination",
+        "warnings": "list[ValidationError]",
+        "overpayments": "list[Overpayment]",
+    }
 
-    attribute_map = {"overpayments": "Overpayments"}
+    attribute_map = {
+        "pagination": "pagination",
+        "warnings": "Warnings",
+        "overpayments": "Overpayments",
+    }
 
-    def __init__(self, overpayments=None):  # noqa: E501
+    def __init__(self, pagination=None, warnings=None, overpayments=None):  # noqa: E501
         """Overpayments - a model defined in OpenAPI"""  # noqa: E501
 
+        self._pagination = None
+        self._warnings = None
         self._overpayments = None
         self.discriminator = None
 
+        if pagination is not None:
+            self.pagination = pagination
+        if warnings is not None:
+            self.warnings = warnings
         if overpayments is not None:
             self.overpayments = overpayments
+
+    @property
+    def pagination(self):
+        """Gets the pagination of this Overpayments.  # noqa: E501
+
+
+        :return: The pagination of this Overpayments.  # noqa: E501
+        :rtype: Pagination
+        """
+        return self._pagination
+
+    @pagination.setter
+    def pagination(self, pagination):
+        """Sets the pagination of this Overpayments.
+
+
+        :param pagination: The pagination of this Overpayments.  # noqa: E501
+        :type: Pagination
+        """
+
+        self._pagination = pagination
+
+    @property
+    def warnings(self):
+        """Gets the warnings of this Overpayments.  # noqa: E501
+
+        Displays array of warning messages from the API  # noqa: E501
+
+        :return: The warnings of this Overpayments.  # noqa: E501
+        :rtype: list[ValidationError]
+        """
+        return self._warnings
+
+    @warnings.setter
+    def warnings(self, warnings):
+        """Sets the warnings of this Overpayments.
+
+        Displays array of warning messages from the API  # noqa: E501
+
+        :param warnings: The warnings of this Overpayments.  # noqa: E501
+        :type: list[ValidationError]
+        """
+
+        self._warnings = warnings
 
     @property
     def overpayments(self):
